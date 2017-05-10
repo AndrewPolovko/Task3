@@ -3,4 +3,45 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+    <item name="shapeColorsRed" type="color">#f44336</item>
+    <item name="shapeColorsPink" type="color">#e91e63</item>
+    <item name="shapeColorsPurple" type="color">#9c27b0</item>
+    <item name="shapeColorsDeepPurple" type="color">#673ab7</item>
+    <item name="shapeColorsIndigo" type="color">#3f51b5</item>
+    <item name="shapeColorsBlue" type="color">#2196f3</item>
+    <item name="shapeColorsLightBlue" type="color">#03a9f4</item>
+    <item name="shapeColorsCyan" type="color">#00bcd4</item>
+    <item name="shapeColorsTeal" type="color">#009688</item>
+    <item name="shapeColorsGreen" type="color">#4caf50</item>
+    <item name="shapeColorsLightGreen" type="color">#8bc34a</item>
+    <item name="shapeColorsLime" type="color">#cddc39</item>
+    <item name="shapeColorsYellow" type="color">#ffeb3b</item>
+    <item name="shapeColorsAmber" type="color">#ffc107</item>
+    <item name="shapeColorsOrange" type="color">#ff9800</item>
+    <item name="shapeColorsDeepOrange" type="color">#ff5722</item>
+    <item name="shapeColorsBrown" type="color">#795548</item>
+    <item name="shapeColorsGrey" type="color">#9e9e9e</item>
+
+    <integer-array name="shapeColors">
+        <item>@color/shapeColorsRed</item>
+        <item>@color/shapeColorsPink</item>
+        <item>@color/shapeColorsPurple</item>
+        <item>@color/shapeColorsDeepPurple</item>
+        <item>@color/shapeColorsIndigo</item>
+        <item>@color/shapeColorsBlue</item>
+        <item>@color/shapeColorsLightBlue</item>
+        <item>@color/shapeColorsCyan</item>
+        <item>@color/shapeColorsTeal</item>
+        <item>@color/shapeColorsGreen</item>
+        <item>@color/shapeColorsLightGreen</item>
+        <item>@color/shapeColorsLime</item>
+        <item>@color/shapeColorsYellow</item>
+        <item>@color/shapeColorsAmber</item>
+        <item>@color/shapeColorsOrange</item>
+        <item>@color/shapeColorsDeepOrange</item>
+        <item>@color/shapeColorsBrown</item>
+        <item>@color/shapeColorsGrey</item>
+    </integer-array>
 </resources>

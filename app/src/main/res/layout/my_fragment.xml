@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="3">
+
+
+    <ImageView
+        android:id="@+id/triangle_shape"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/shape_size"
+        android:layout_weight="1"
+        android:src="@drawable/ic_triangle_black_24dp" />
+
+    <ImageView
+        android:id="@+id/circle_shape"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/shape_size"
+        android:layout_weight="1"
+        android:src="@drawable/ic_circle_black_24dp" />
+
+    <ImageView
+        android:id="@+id/star_shape"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/shape_size"
+        android:layout_weight="1"
+        android:src="@drawable/ic_star_black_24dp" />
+
+</LinearLayout>
