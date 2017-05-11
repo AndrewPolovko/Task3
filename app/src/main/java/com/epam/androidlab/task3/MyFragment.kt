@@ -12,13 +12,19 @@ import java.util.*
 
 
 class MyFragment : android.support.v4.app.Fragment(), View.OnClickListener {
-    val TRIANGLE_COLOR = "triangleColor"
-    val CIRCLE_COLOR = "circleColor"
-    val STAR_COLOR = "starColor"
+    val TRIANGLE_COLOR_KEY = "${BuildConfig.APPLICATION_ID}_triangleColor"
+    val CIRCLE_COLOR_KEY = "${BuildConfig.APPLICATION_ID}_circleColor"
+    val STAR_COLOR_KEY = "${BuildConfig.APPLICATION_ID}_starColor"
+    var triangleColor: Int = 0
+    var circleColor: Int = 0
+    var starColor: Int = 0
+
     lateinit var triangleShape: ImageView
     lateinit var circleShape: ImageView
     lateinit var starShape: ImageView
-    lateinit var shapeColors: IntArray
+
+    lateinit var allColors: IntArray
+    lateinit var anim: Animation
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -30,15 +36,15 @@ class MyFragment : android.support.v4.app.Fragment(), View.OnClickListener {
         initVariables()
 
         savedState?.let {
-            val triangleColor = savedState.getInt(TRIANGLE_COLOR)
+            triangleColor = savedState.getInt(TRIANGLE_COLOR_KEY)
             triangleShape.setColorFilter(triangleColor)
             triangleShape.tag = triangleColor
 
-            val circleColor = savedState.getInt(CIRCLE_COLOR)
+            circleColor = savedState.getInt(CIRCLE_COLOR_KEY)
             circleShape.setColorFilter(circleColor)
             circleShape.tag = circleColor
 
-            val starColor = savedState.getInt(STAR_COLOR)
+            starColor = savedState.getInt(STAR_COLOR_KEY)
             starShape.setColorFilter(starColor)
             starShape.tag = starColor
         }
@@ -49,7 +55,7 @@ class MyFragment : android.support.v4.app.Fragment(), View.OnClickListener {
         triangleShape = view?.findViewById(R.id.triangle_shape) as ImageView
         circleShape = view?.findViewById(R.id.circle_shape) as ImageView
         starShape = view?.findViewById(R.id.star_shape) as ImageView
-        shapeColors = resources.getIntArray(R.array.shapeColors)
+        allColors = resources.getIntArray(R.array.shapeColors)
 
         triangleShape.setOnClickListener(this)
         circleShape.setOnClickListener(this)
@@ -57,8 +63,7 @@ class MyFragment : android.support.v4.app.Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        val anim = AnimationUtils.loadAnimation(activity, R.anim.rotate_animation)
-
+        anim = AnimationUtils.loadAnimation(activity, R.anim.rotate_animation)
         anim.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {}
             override fun onAnimationEnd(animation: Animation?) {
@@ -67,7 +72,6 @@ class MyFragment : android.support.v4.app.Fragment(), View.OnClickListener {
 
             override fun onAnimationRepeat(animation: Animation?) {}
         })
-
         v.startAnimation(anim)
     }
 
@@ -76,20 +80,20 @@ class MyFragment : android.support.v4.app.Fragment(), View.OnClickListener {
         var newColor: Int
         if (v.getTag() != null) {
             do {
-                newColor = shapeColors[Random().nextInt(shapeColors.size)]
+                newColor = allColors[Random().nextInt(allColors.size)]
             } while (v.getTag() == newColor)
 
         } else {
-            newColor = shapeColors[Random().nextInt(shapeColors.size)]
+            newColor = allColors[Random().nextInt(allColors.size)]
         }
         v.setColorFilter(newColor)
         v.setTag(newColor)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        triangleShape.tag?.let { outState.putInt(TRIANGLE_COLOR, triangleShape.tag as Int) }
-        circleShape.tag?.let { outState.putInt(CIRCLE_COLOR, circleShape.tag as Int) }
-        starShape.tag?.let { outState.putInt(STAR_COLOR, starShape.tag as Int) }
+        triangleShape.tag?.let { outState.putInt(TRIANGLE_COLOR_KEY, triangleShape.tag as Int) }
+        circleShape.tag?.let { outState.putInt(CIRCLE_COLOR_KEY, circleShape.tag as Int) }
+        starShape.tag?.let { outState.putInt(STAR_COLOR_KEY, starShape.tag as Int) }
         super.onSaveInstanceState(outState)
     }
 }

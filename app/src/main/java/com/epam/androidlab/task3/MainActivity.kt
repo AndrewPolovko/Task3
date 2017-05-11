@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
-    val MY_FRAGMENT = "my_fragment"
+    val MY_FRAGMENT_KEY = "${BuildConfig.APPLICATION_ID}_my_fragment"
     var fragment = MyFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,13 +22,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedState: Bundle?) {
         savedState?.let {
-            fragment = supportFragmentManager.getFragment(savedState, MY_FRAGMENT) as MyFragment
+            fragment = supportFragmentManager.getFragment(savedState, MY_FRAGMENT_KEY) as MyFragment
         }
         super.onRestoreInstanceState(savedState)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        supportFragmentManager.putFragment(outState, MY_FRAGMENT, fragment as Fragment)
+        supportFragmentManager.putFragment(outState, MY_FRAGMENT_KEY, fragment as Fragment)
         super.onSaveInstanceState(outState)
     }
 }
